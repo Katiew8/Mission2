@@ -6,10 +6,14 @@ namespace Mission2
     {
         static void Main(string[] args)
         {
+            //lines of text at begining of program
             Console.WriteLine("Welcome to the dice throwing simulator! \n");
             Console.WriteLine("How many dice rolls would you like to simulate?");
+
+            //takes user input and changes it to an integer for later use
             int x = Convert.ToInt32(Console.ReadLine());
 
+            //explains program output
             Console.WriteLine("\nDICE ROLLING SIMULATION RESULTS");
             Console.WriteLine("Each \"*\" represents 1% of the total number of rolls. \nTotal number of rolls = " + x + '\n');
 
@@ -26,23 +30,30 @@ namespace Mission2
             Random r = new Random();
             for (int i = 0; i < x; i++)
             {
-                //this is the random roll
+                //this is the random rolls
                 int roll1 = r.Next(1, 7);
                 int roll2 = r.Next(1, 7);
+                //addition of rolls for sum of rolls
                 int rolltotal = roll1 + roll2;
+                //assigning roll to count in array
                 dice[rolltotal]++;
             }
 
             //loop 11 times to go through each number rolled
             for (int i = 2; i < 13; i++)
             {
+                //finds the percentage of times number was rolled
                 float y = ((dice[i] / (float)x) * 100);
+                //rounds the average of each number 
                 int w = Convert.ToInt32(Math.Round(y));
                 string q = "";
+                //for loop to create the strings containing "*"
                 for (int z = 0; z < w; z++)
                 {
+                    //adds a "*" for every percentage
                     q = (q + "*");
                 }
+                //prints "*"
                 Console.WriteLine(i + ": " + q);
             }
 
